@@ -20,11 +20,9 @@ import frc.robot.subsystems.*;
 import static frc.robot.Constants.*;
 
 public class RobotContainer {
-  private Command driveForward;
   private Command sixPoint;
   private Command tenPoint;
   private Command waitForTeleOp;
-  private Command climbChild;
 
   // == JOYSTICKS == //
 
@@ -82,6 +80,7 @@ public class RobotContainer {
   // Intake
   public final JoystickButton intakeButton = new JoystickButton(operator, INTAKE_BUTTON);
   public final JoystickButton raiseIntakeButton = new JoystickButton(operator, RAISE_INTAKE_BUTTON);
+  public final JoystickButton outtakeButton = new JoystickButton(operator, OUTTAKE_BUTTON);
 
   // Catapult
 
@@ -89,14 +88,6 @@ public class RobotContainer {
       new JoystickButton(operator, LOWERCATAPULT_BUTTON);
   public final JoystickButton releaseCatapultButton =
       new JoystickButton(operator, RELEASECATAPULT_BUTTON);
-  // public final JoystickButton alignCatapultButton =
-  //     new JoystickButton(operator, ALIGNCATAPULT_BUTTON);
-
-  // Climber
-  // public final JoystickButton climbButton = new JoystickButton(operator, CLIMB_BUTTON);
-  public final JoystickButton extend = new JoystickButton(operator, BUTTON_Y);
-  public final JoystickButton retract = new JoystickButton(operator, BUTTON_B);
-  // public final JoystickButton stay = new JoystickButton(operator, BUTTON_Y);
 
   // == COMMANDS == //
 
@@ -107,6 +98,7 @@ public class RobotContainer {
 
   public final Command intakeCommand = new IntakeCommand(INTAKE);
   public final Command raiseIntakeCommand = new RaiseIntakeCommand(INTAKE);
+  public final Command outtakeCommand = new OuttakeCommand(INTAKE);
   // Catapult Commands
   public final Command releaseCatapultCommand = new ReleaseCatapultCommand(CATAPULT);
   public final Command lowerCatapultCommand = new LowerCatapultCommand(CATAPULT);
@@ -165,8 +157,8 @@ public class RobotContainer {
         new RunCommand(
             () ->
                 CLIMBER.supplyTelescoping(
-                    operator.getRawAxis(TRANSLATIONAL_VERTICAL_AXIS),
-                    operator.getRawAxis(TRANSLATIONAL_VERTICAL_AXIS)), CLIMBER));
+                    operator.getRawAxis(CLIMBER_AXIS),
+                    operator.getRawAxis(CLIMBER_AXIS)), CLIMBER));
 
     // Catapult
     lowerCatapultButton.whenHeld(lowerCatapultCommand);
@@ -177,6 +169,7 @@ public class RobotContainer {
     // Intake
     intakeButton.whileHeld(intakeCommand);
     raiseIntakeButton.whenPressed(raiseIntakeCommand);
+    outtakeButton.whileHeld(outtakeCommand);
 
     // Gyro
     gyroResetButton.whenPressed(gyroResetCommand);

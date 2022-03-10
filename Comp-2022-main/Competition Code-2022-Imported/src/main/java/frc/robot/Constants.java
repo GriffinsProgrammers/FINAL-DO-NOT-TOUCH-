@@ -64,20 +64,20 @@ public final class Constants {
   public static final int TRANSLATIONAL_HORIZONTAL_AXIS = 0;
   public static final int TRANSLATIONAL_VERTICAL_AXIS = 1;
   public static final int ROTATIONAL_HORIZONTAL_AXIS = 4;
-  //public static final int ROTATIONAL_VERTICAL_AXIS = 5;
 
   // Intake
   public static final int INTAKE_BUTTON = RIGHT_BUMPER;
   public static final int RAISE_INTAKE_BUTTON = LEFT_BUMPER;
+  public static final int OUTTAKE_BUTTON = LEFT_TRIGGER;
 
   // Catapult
   public static final int LOWERCATAPULT_BUTTON = BUTTON_X;
 
+  //Climber
+  public static final int CLIMBER_AXIS = 1;
+
   public static final int RELEASECATAPULT_BUTTON = BUTTON_B;
   // public static final int ALIGNCATAPULT_BUTTON = BUTTON_A;
-
-  // Climber
-  public static final int CLIMB_BUTTON = BUTTON_Y;
 
   // === EXTRAS === //
 
