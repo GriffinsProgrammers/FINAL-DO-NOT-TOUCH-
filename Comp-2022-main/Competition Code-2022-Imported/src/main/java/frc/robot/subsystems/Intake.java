@@ -30,11 +30,11 @@ public class Intake extends SubsystemBase {
 
   // This method sets the intake motor's speed to a value.
   public void intake() {
-    rollerMotor.set(ControlMode.PercentOutput, 0.8); //was 0.5 before
+    rollerMotor.set(ControlMode.PercentOutput, 0.65); //was 0.5 before
   }
 
   public void outtake(){
-    rollerMotor.set(ControlMode.PercentOutput, -0.8);
+    rollerMotor.set(ControlMode.PercentOutput, -0.65);
   }
 
   // This method pushes the Intake piston forward.

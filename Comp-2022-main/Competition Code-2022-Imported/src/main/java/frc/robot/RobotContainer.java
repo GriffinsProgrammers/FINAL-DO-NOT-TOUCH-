@@ -188,6 +188,7 @@ public class RobotContainer {
     SWERVEROTATERS.resetEncoders();
     GYRO.resetValues();
   }
+  /*
 
   public void initailizeAutoChooser(SendableChooser<Command> chooser) {
     tenPoint = new Pos1(getRotaters(), getSpinners(), getGyro(), getCatapult(), getIntake());
@@ -197,4 +198,5 @@ public class RobotContainer {
     chooser.addOption("10 point", tenPoint);
     chooser.addOption("Do Nothing", waitForTeleOp);
   }
+  */
 }

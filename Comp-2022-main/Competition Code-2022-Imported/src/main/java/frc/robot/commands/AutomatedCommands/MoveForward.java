@@ -14,7 +14,6 @@ public class MoveForward extends CommandBase {
   SwerveSpinners spinners;
   private double moveTime;
   private double direction;
-  private double power;
   private double startTime = 0;
 
   // This command sets the wheels to a specific angle and drives the robot a certain
@@ -23,11 +22,9 @@ public class MoveForward extends CommandBase {
       SwerveRotaters rotators,
       SwerveSpinners spinners,
       double moveTime,
-      double direction,
-      double power) {
+      double direction) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.rotators = rotators;
-    this.power = power;
     this.spinners = spinners;
     this.moveTime = moveTime;
     this.direction = direction;
@@ -47,26 +44,24 @@ public class MoveForward extends CommandBase {
   @Override
   public void execute() {
     rotators.setWheelDirection(0, 0, 0, 0);
-    // if (rotators.reachedPosition(0, 0, 0, 0)) { enabling this has too low tolerance thuis wont
+    if (rotators.reachedPosition(0, 0, 0, 0)) {
     // move second time
-    spinners.runSpinners(direction * power);
+      spinners.runSpinners(direction * 0.5); //0.5 is power
+
+    }
     // }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    rotators.setWheelDirection(90, 90, 90, 90);
     rotators.stop();
     spinners.stop();
-    rotators.setWheelDirection(0, 0, 0, 0);
-    System.out.println("Finished");
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    System.out.println("uwu!" + (System.currentTimeMillis() - startTime));
     return (System.currentTimeMillis() - startTime) > 1000 * moveTime;
   }
 }

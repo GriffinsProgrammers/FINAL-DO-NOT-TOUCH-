@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.commands.LowerCatapultCommand;
 import frc.robot.commands.ReleaseCatapultCommand;
 import frc.robot.subsystems.*;
+import frc.robot.commands.AutomatedCommands.*;
+import frc.robot.commands.*;
+
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -27,16 +30,12 @@ public class Sixpointer extends SequentialCommandGroup {
       Intake intake) {
     // This is the sequential commands within our autonomous sequence
     gyroAuto = gyro;
-    rotators.resetEncoders();
     addCommands(
         new SequentialCommandGroup(
             new IntakeAuto(intake, true),
-            new WaitCommand(1),
+            new LowerCatapult(catapult),
+            new Rotate(rotators, spinners, gyroAuto, 180),
             new ReleaseCatapultCommand(catapult),
-            new WaitCommand(4),
-            new LowerCatapultCommand(catapult),
-            new MoveForward(rotators, spinners, 2, -1, 0.4)));
+            new MoveForward(rotators, spinners, 1, 1)));
   }
 }
-
-// move forward, shoot, rotate 15 degrees anti conclic, move direction with 5

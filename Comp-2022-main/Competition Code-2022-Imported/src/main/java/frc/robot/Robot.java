@@ -24,11 +24,6 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class Robot extends TimedRobot {
 
   private Sixpointer m_autonomousCommand;
-  private Command driveForward;
-  private Command sixPoint;
-  private Command tenPoint;
-  private Command waitForTeleOp;
-  private Command climbChild;
 
   private RobotContainer rCon;
   private final SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -88,8 +83,10 @@ public class Robot extends TimedRobot {
             rCon.getCatapult(),
             rCon.getIntake());
     // schedule the autonomous command (example)
-    rCon.reset();
-    m_autonomousCommand.schedule();
+    if (m_autonomousCommand!= null){
+      rCon.reset();
+      m_autonomousCommand.schedule();
+    }
   }
 
   public void getAutoCommand() {
@@ -109,7 +106,7 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
     if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+      m_autonomousCommand.cancel();                                   
     }
     else{
       rCon.reset();

@@ -49,9 +49,9 @@ public final class Constants {
   // == BUTTON CONSTANTS == //
 
   // Controller Buttons
-  public static final int BUTTON_X = 1; // 1 on 001
-  public static final int BUTTON_A = 2; // 2 on 001
-  public static final int BUTTON_B = 3; // 3 on 001
+  public static final int BUTTON_X = 3; // 1 on 001
+  public static final int BUTTON_A = 1; // 2 on 001
+  public static final int BUTTON_B = 2; // 3 on 001
   public static final int BUTTON_Y = 4; // 4 on 001
   public static final int LEFT_BUMPER = 5;
   public static final int RIGHT_BUMPER = 6;
@@ -71,12 +71,12 @@ public final class Constants {
   public static final int OUTTAKE_BUTTON = LEFT_TRIGGER;
 
   // Catapult
-  public static final int LOWERCATAPULT_BUTTON = BUTTON_X;
+  public static final int LOWERCATAPULT_BUTTON = BUTTON_Y;
 
   //Climber
   public static final int CLIMBER_AXIS = 1;
 
-  public static final int RELEASECATAPULT_BUTTON = BUTTON_B;
+  public static final int RELEASECATAPULT_BUTTON = BUTTON_A;
   // public static final int ALIGNCATAPULT_BUTTON = BUTTON_A;
 
   // === EXTRAS === //
@@ -114,7 +114,7 @@ public final class Constants {
   public static final double ROTATOR_ERROR_TOLERANCE = 100;
   public static final double SPINNER_ERROR_TOLERANCE = 10;
   public static final double ANGLE_ERROR_TOLERANCE = 2.5;
-  public static final double AUTO_ROTATE_SPEED = 0.15;
+  public static final double AUTO_ROTATE_SPEED = 0.23;
   public static final double AUTO_ALIGN_SPEED = 0.1;
   public static final double AUTO_ALIGN_ERROR = 5;
 }

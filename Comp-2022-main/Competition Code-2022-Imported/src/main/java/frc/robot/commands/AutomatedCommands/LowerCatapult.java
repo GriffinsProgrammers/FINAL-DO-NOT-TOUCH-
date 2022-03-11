@@ -9,14 +9,14 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.subsystems.Catapult;
 import static frc.robot.Constants.*;
 
-public class LowerCatapultAuto extends CommandBase {
+public class LowerCatapult extends CommandBase {
   // Creates wind catapult arm command
   private Catapult CATAPULT;
   private DoubleSolenoid.Value shooter_piston_state;
   private boolean piston_retracted = false;
   private long retractTimer;
 
-  public LowerCatapultAuto(Catapult CATAPULT) {
+  public LowerCatapult(Catapult CATAPULT) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(CATAPULT);
 
@@ -44,6 +44,6 @@ public class LowerCatapultAuto extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return (System.currentTimeMillis() - retractTimer > 1500);
+    return (System.currentTimeMillis() - retractTimer > 1200);
   }
 }
