@@ -34,7 +34,7 @@ public class Sixpointer extends SequentialCommandGroup {
         new SequentialCommandGroup(
             new IntakeAuto(intake, true),
             new LowerCatapult(catapult),
-            new Rotate(rotators, spinners, gyroAuto, 180),
+            new Rotate(rotators, spinners, gyroAuto, 180), //135 or 225
             new ReleaseCatapultCommand(catapult),
             new MoveForward(rotators, spinners, 1, 1)));
   }

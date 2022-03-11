@@ -33,6 +33,6 @@ public class IntakeAuto extends CommandBase {
   }
 
   public boolean isFinished() {
-    return (System.currentTimeMillis() - timer > 4000);
+    return (System.currentTimeMillis() - timer > 2500);
   }
 }
