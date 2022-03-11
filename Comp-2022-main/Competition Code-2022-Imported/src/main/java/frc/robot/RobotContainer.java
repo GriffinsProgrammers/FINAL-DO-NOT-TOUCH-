@@ -191,7 +191,7 @@ public class RobotContainer {
 
   public void initailizeAutoChooser(SendableChooser<Command> chooser) {
     tenPoint = new Pos1(getRotaters(), getSpinners(), getGyro(), getCatapult(), getIntake());
-    sixPoint = new sixpointer(getRotaters(), getSpinners(), getGyro(), getCatapult(), getIntake());
+    sixPoint = new Sixpointer(getRotaters(), getSpinners(), getGyro(), getCatapult(), getIntake());
     waitForTeleOp = new DoNothing();
     chooser.addOption("6 Point", sixPoint);
     chooser.addOption("10 point", tenPoint);

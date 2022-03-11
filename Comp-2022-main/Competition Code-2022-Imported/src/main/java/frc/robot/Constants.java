@@ -23,14 +23,12 @@ public final class Constants {
 
   // Intake Ports
   public static final int INTAKE_MOTOR_PORT = 10;
-  public static final int INTAKE_PISTON_PORT_1 = 4;
+  public static final int INTAKE_PISTON_PORT_1 = 3;
   public static final int INTAKE_PISTON_PORT_2 = 2;
 
   // Climber Ports
   public static final int TELESCOPE_PORT_1 = 12;
   public static final int TELESCOPE_PORT_2 = 13;
-  public static final int SECONDARY_PORT_1 = 1;
-  public static final int SECONDARY_PORT_2 = 1;
 
   // Catapult Ports
   public static final int SHOOTER_MOTOR_PORT_1 = 11;
