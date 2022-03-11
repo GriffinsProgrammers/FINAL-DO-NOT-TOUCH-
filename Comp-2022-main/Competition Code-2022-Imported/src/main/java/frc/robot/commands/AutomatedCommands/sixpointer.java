@@ -13,13 +13,13 @@ import frc.robot.subsystems.*;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class sixpointer extends SequentialCommandGroup {
+public class Sixpointer extends SequentialCommandGroup {
   /** Creates a new autonomous command sequence. */
   /*
   move, shoot, move, intake, move shoot, */
   public Gyro gyroAuto;
 
-  public sixpointer(
+  public Sixpointer(
       SwerveRotaters rotators,
       SwerveSpinners spinners,
       Gyro gyro,
@@ -35,7 +35,7 @@ public class sixpointer extends SequentialCommandGroup {
             new ReleaseCatapultCommand(catapult),
             new WaitCommand(4),
             new LowerCatapultCommand(catapult),
-            new MoveForward(rotators, spinners,21, -1, 0.4)));
+            new MoveForward(rotators, spinners, 2, -1, 0.4)));
   }
 }
 

@@ -23,7 +23,7 @@ import edu.wpi.first.cameraserver.CameraServer;
  */
 public class Robot extends TimedRobot {
 
-  private Command m_autonomousCommand;
+  private Sixpointer m_autonomousCommand;
   private Command driveForward;
   private Command sixPoint;
   private Command tenPoint;
@@ -44,9 +44,9 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     rCon = new RobotContainer();
-    rCon.initailizeAutoChooser(autoChooser);
-    SmartDashboard.putData("Auto choices", autoChooser);
-    SmartDashboard.putNumber("Auto Wait Time", 0);
+    //rCon.initailizeAutoChooser(autoChooser);
+    //SmartDashboard.putData("Auto choices", autoChooser);
+    //SmartDashboard.putNumber("Auto Wait Time", 0);
     // SmartDashboard.putData("Auto choices", autoChooser);
     // SmartDashboard.putNumber("Auto Wait Time", 0);
   }
@@ -81,7 +81,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand =
-        new sixpointer(
+        new Sixpointer(
             rCon.getRotaters(),
             rCon.getSpinners(),
             rCon.getGyro(),
@@ -89,9 +89,7 @@ public class Robot extends TimedRobot {
             rCon.getIntake());
     // schedule the autonomous command (example)
     rCon.reset();
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
+    m_autonomousCommand.schedule();
   }
 
   public void getAutoCommand() {
