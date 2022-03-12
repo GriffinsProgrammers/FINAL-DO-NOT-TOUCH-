@@ -2,33 +2,24 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.AutomatedCommands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import frc.robot.subsystems.Catapult;
-import static frc.robot.Constants.*;
+import frc.robot.subsystems.SwerveSpinners;
 
-public class LowerCatapultAuto extends CommandBase {
-  // Creates wind catapult arm command
-  private Catapult CATAPULT;
-  private DoubleSolenoid.Value shooter_piston_state;
-  private boolean piston_retracted = false;
-  private long retractTimer;
+public class Boost extends CommandBase {
+  SwerveSpinners spinners;
 
-  public LowerCatapultAuto(Catapult CATAPULT) {
+  /** Creates a new Boost. */
+  public Boost(SwerveSpinners spinners) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(CATAPULT);
-
-    this.CATAPULT = CATAPULT;
+    this.spinners = spinners;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    retractTimer = System.currentTimeMillis();
-    CATAPULT.retractPiston();
-    CATAPULT.setSpeed();
+    spinners.setCurrLimit(60);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,12 +29,12 @@ public class LowerCatapultAuto extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    CATAPULT.motorsOff();
+    spinners.setCurrLimit(30);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return (System.currentTimeMillis() - retractTimer > 1500);
+    return false;
   }
 }

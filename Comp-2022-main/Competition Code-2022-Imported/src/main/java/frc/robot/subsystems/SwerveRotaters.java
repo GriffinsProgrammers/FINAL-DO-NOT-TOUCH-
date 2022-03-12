@@ -66,17 +66,17 @@ public class SwerveRotaters extends SubsystemBase {
 
   // This function limits the current that each motor is drawing
   public void limitMotorCurrent() {
-    fRRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 1));
-    fRRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 1));
+    fRRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 15, 16, 1));
+    fRRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 16, 1));
 
-    fLRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 1));
-    fLRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 1));
+    fLRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 15, 16, 1));
+    fLRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 16, 1));
 
-    bLRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 1));
-    bLRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 1));
+    bLRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 15, 16, 1));
+    bLRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 16, 1));
 
-    bRRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 1));
-    bRRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 1));
+    bRRotater.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 15, 16, 1));
+    bRRotater.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 16, 1));
   }
 
   // This function configures the motors

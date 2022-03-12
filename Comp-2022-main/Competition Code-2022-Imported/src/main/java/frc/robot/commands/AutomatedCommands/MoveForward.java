@@ -23,11 +23,9 @@ public class MoveForward extends CommandBase {
       SwerveRotaters rotators,
       SwerveSpinners spinners,
       double moveTime,
-      double direction,
-      double power) {
+      double direction) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.rotators = rotators;
-    this.power = power;
     this.spinners = spinners;
     this.moveTime = moveTime;
     this.direction = direction;
@@ -38,7 +36,6 @@ public class MoveForward extends CommandBase {
   @Override
   public void initialize() {
     startTime = System.currentTimeMillis();
-    System.out.println("MoveForward Initialized");
     spinners.resetEncoders();
     rotators.setWheelDirection(0, 0, 0, 0);
   }
@@ -49,7 +46,7 @@ public class MoveForward extends CommandBase {
     rotators.setWheelDirection(0, 0, 0, 0);
     // if (rotators.reachedPosition(0, 0, 0, 0)) { enabling this has too low tolerance thuis wont
     // move second time
-    spinners.runSpinners(direction * power);
+    spinners.runSpinners(direction * 0.5);
     // }
   }
 

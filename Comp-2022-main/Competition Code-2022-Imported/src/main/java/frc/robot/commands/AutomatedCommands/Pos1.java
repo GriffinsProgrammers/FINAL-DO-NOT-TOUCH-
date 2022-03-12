@@ -32,26 +32,26 @@ public class Pos1 extends SequentialCommandGroup {
             new WaitCommand(6.0),
             new IntakeAuto(intake, true),
             new WaitCommand(1),
-            new MoveForward(rotators, spinners, 0.4, 1, 0.3),
+            new MoveForward(rotators, spinners, 0.4, 1),
             new WaitCommand(2),
             new ReleaseCatapultCommand(catapult),
             new WaitCommand(1),
-            new LowerCatapultAuto(catapult), // make time set option
+            new LowerCatapult(catapult), // make time set option
             new Rotate(rotators, spinners, gyro, 30),
             new ParallelCommandGroup(
-                new MoveForward(rotators, spinners, 0.8, 1, 0.3),
+                new MoveForward(rotators, spinners, 0.8, 1),
                 new RunIntakeAuto(intake, true, 3.0)),
             new WaitCommand(2.0),
-            new MoveForward(rotators, spinners, 0.7, -1, 0.3),
+            new MoveForward(rotators, spinners, 0.7, -1),
             new WaitCommand(1.0),
             new Rotate(rotators, spinners, gyro, 9),
             new WaitCommand(1.0),
             new ReleaseCatapultCommand(catapult),
             new Rotate(rotators, spinners, gyro, 120),
-            new MoveForward(rotators, spinners, 0.4, 1, 0.2),
+            new MoveForward(rotators, spinners, 0.4, 1),
             new SetRotatorsfortELEOP(
                 rotators), // this might not work i was brain dead when creating this
-            new MoveForward(rotators, spinners, 1.0, 1, 0.7),
+            new MoveForward(rotators, spinners, 1.0, 1),
             new GyroReset(gyro)));
     /*
     new ParallelCommandGroup(

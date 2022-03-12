@@ -47,9 +47,9 @@ public final class Constants {
   // == BUTTON CONSTANTS == //
 
   // Controller Buttons
-  public static final int BUTTON_X = 1; // 1 on 001
-  public static final int BUTTON_A = 2; // 2 on 001
-  public static final int BUTTON_B = 3; // 3 on 001
+  public static final int BUTTON_X = 3; // 1 on 001
+  public static final int BUTTON_A = 1; // 2 on 001
+  public static final int BUTTON_B = 2; // 3 on 001
   public static final int BUTTON_Y = 4; // 4 on 001
   public static final int LEFT_BUMPER = 5;
   public static final int RIGHT_BUMPER = 6;

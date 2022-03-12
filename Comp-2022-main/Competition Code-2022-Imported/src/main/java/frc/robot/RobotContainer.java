@@ -43,7 +43,7 @@ public class RobotContainer {
   // Mechanism Subs
   public final Catapult CATAPULT = new Catapult();
 
-  public final Intake INTAKE = new Intake();
+  // public final Intake INTAKE = new Intake();
   public final Climber CLIMBER = new Climber();
   // public final CompressorF COMPRESSOR = new CompressorF();
 
@@ -60,9 +60,9 @@ public class RobotContainer {
     return GYRO;
   }
 
-  public Intake getIntake() {
-    return INTAKE;
-  }
+  //public Intake getIntake() {
+  //  return INTAKE;
+  //}
 
   public Climber getClimber() {
     return CLIMBER;
@@ -94,11 +94,11 @@ public class RobotContainer {
   // Gyro Commands
   public final Command gyroResetCommand = new GyroReset(GYRO);
 
-  // Intake Commands
+  // Intake Commands^^^^^^^^^^^^^^^^^^^
 
-  public final Command intakeCommand = new IntakeCommand(INTAKE);
-  public final Command raiseIntakeCommand = new RaiseIntakeCommand(INTAKE);
-  public final Command outtakeCommand = new OuttakeCommand(INTAKE);
+  // public final Command intakeCommand = new IntakeCommand(INTAKE);
+  // public final Command raiseIntakeCommand = new RaiseIntakeCommand(INTAKE);
+  // public final Command outtakeCommand = new OuttakeCommand(INTAKE);
   // Catapult Commands
   public final Command releaseCatapultCommand = new ReleaseCatapultCommand(CATAPULT);
   public final Command lowerCatapultCommand = new LowerCatapultCommand(CATAPULT);
@@ -108,8 +108,8 @@ public class RobotContainer {
 
   // public final Command climbSequence = new ClimbSequence(CLIMBER/*, SWERVEROTATERS,
   // SWERVESPINNERS);
-  public final Command extendCommand = new PowerTelescopingCommand(CLIMBER, INTAKE, -1);
-  public final Command retractCommand = new PowerTelescopingCommand(CLIMBER, INTAKE, 1);
+  // public final Command extendCommand = new PowerTelescopingCommand(CLIMBER, INTAKE, -1);
+  // public final Command retractCommand = new PowerTelescopingCommand(CLIMBER, INTAKE, 1);
   // public final Command stayCommand = new PowerTelescopingCommand(CLIMBER, 0);
 
   // This constructs the robot container class.
@@ -147,7 +147,7 @@ public class RobotContainer {
                     SWERVEROTATERS.getAngle(
                         shopper.getRawAxis(TRANSLATIONAL_HORIZONTAL_AXIS),
                         shopper.getRawAxis(TRANSLATIONAL_VERTICAL_AXIS),
-                        GYRO.getYaw())),
+                        GYRO.getYaw()), shopper.getRawAxis(2)),
             SWERVESPINNERS));
     GYRO.setDefaultCommand(new RunCommand(() -> GYRO.getState(), GYRO));
     // INTAKE.setDefaultCommand(new RunCommand(() -> INTAKE.intake(), INTAKE));
@@ -167,9 +167,9 @@ public class RobotContainer {
     // alignCatapultButton.whenHeld(alignCatapultCommand);
 
     // Intake
-    intakeButton.whileHeld(intakeCommand);
-    raiseIntakeButton.whenPressed(raiseIntakeCommand);
-    outtakeButton.whileHeld(outtakeCommand);
+    //intakeButton.whileHeld(intakeCommand);
+    //raiseIntakeButton.whenPressed(raiseIntakeCommand);
+    //outtakeButton.whileHeld(outtakeCommand);
 
     // Gyro
     gyroResetButton.whenPressed(gyroResetCommand);
@@ -190,8 +190,8 @@ public class RobotContainer {
   }
 
   public void initailizeAutoChooser(SendableChooser<Command> chooser) {
-    tenPoint = new Pos1(getRotaters(), getSpinners(), getGyro(), getCatapult(), getIntake());
-    sixPoint = new Sixpointer(getRotaters(), getSpinners(), getGyro(), getCatapult(), getIntake());
+    // tenPoint = new Pos1(getRotaters(), getSpinners(), getGyro(), getCatapult());//, getIntake());
+    sixPoint = new Sixpointer(getRotaters(), getSpinners(), getGyro(), getCatapult());//, getIntake());
     waitForTeleOp = new DoNothing();
     chooser.addOption("6 Point", sixPoint);
     chooser.addOption("10 point", tenPoint);

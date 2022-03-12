@@ -23,19 +23,18 @@ public class Sixpointer extends SequentialCommandGroup {
       SwerveRotaters rotators,
       SwerveSpinners spinners,
       Gyro gyro,
-      Catapult catapult,
-      Intake intake) {
+      Catapult catapult) {//,
+      //Intake intake) {
     // This is the sequential commands within our autonomous sequence
     gyroAuto = gyro;
     rotators.resetEncoders();
     addCommands(
         new SequentialCommandGroup(
-            new IntakeAuto(intake, true),
-            new WaitCommand(1),
-            new ReleaseCatapultCommand(catapult),
-            new WaitCommand(4),
-            new LowerCatapultCommand(catapult),
-            new MoveForward(rotators, spinners, 2, -1, 0.4)));
+            //new IntakeAuto(intake, true),
+            //new LowerCatapult(catapult),
+            new Rotate(rotators, spinners, gyroAuto, 180),
+            //new ReleaseCatapultCommand(catapult),
+            new MoveForward(rotators, spinners, 1, 1)));
   }
 }
 

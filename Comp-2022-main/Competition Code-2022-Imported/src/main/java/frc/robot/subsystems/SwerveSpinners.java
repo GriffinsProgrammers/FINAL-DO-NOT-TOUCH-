@@ -25,8 +25,8 @@ public class SwerveSpinners extends SubsystemBase {
   /** These are the variables for the SwerveSpinners subsytem. */
   public static final double WHEEL_DIAMETER_INCHES = 4;
 
-  public static final double SPEED_MULTIPLIER = 0.7;
-  public static final double ROTATION_COEFFICIENT = 0.4;
+  public static final double SPEED_MULTIPLIER = 1;
+  public static final double ROTATION_COEFFICIENT = 0.6;
   private WPI_TalonFX bRMotor, bLMotor, fRMotor, fLMotor;
   // private SpeedControllerGroup bR, bL, fR, fL;
   private MotorControllerGroup bR, bL, fR, fL;
@@ -50,17 +50,17 @@ public class SwerveSpinners extends SubsystemBase {
   }
 
   public void limitMotorCurrent() {
-    fLMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 0.1));
-    fLMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 0.1));
+    fLMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 30, 31, 0.1));
+    fLMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 31, 0.1));
 
-    fRMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 0.1));
-    fRMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 0.1));
+    fRMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 30, 31, 0.1));
+    fRMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 31, 0.1));
 
-    bRMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 0.1));
-    bRMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 0.1));
+    bRMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 30, 31, 0.1));
+    bRMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 31, 0.1));
 
-    bLMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 21, 0.1));
-    bLMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 20, 21, 0.1));
+    bLMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 30, 31, 0.1));
+    bLMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 31, 0.1));
   }
 
   // This is the initialization method for PID config.
@@ -117,10 +117,17 @@ public class SwerveSpinners extends SubsystemBase {
 
   // This function is the default command for the swervedrive spinners.
   public void spinMotors(
-      double horizontal, double vertical, double rotationHorizontal, double angle) {
+      double horizontal, double vertical, double rotationHorizontal, double angle, double limit) {
     // This -1 is due to how the vertical axis works on the controller.
     vertical *= -1;
 
+    if (limit >=0.25){
+      setCurrLimit(60);
+    }
+    else{
+      setCurrLimit(30);
+    }
+    
     double r =
         (Math.pow(Math.sqrt(horizontal * horizontal + vertical * vertical), 1) * SPEED_MULTIPLIER);
     double backRightSpeed = 0;
@@ -206,6 +213,20 @@ public class SwerveSpinners extends SubsystemBase {
     fLMotor.set(ControlMode.PercentOutput, speed);
     bRMotor.set(ControlMode.PercentOutput, speed);
     bLMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void setCurrLimit(double limit){
+    fLMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+    fLMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+
+    fRMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+    fRMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+
+    bRMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+    bRMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+
+    bLMotor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, limit, limit+1, 0.1));
+    bLMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, limit, limit+1, 0.1));
   }
 
   @Override

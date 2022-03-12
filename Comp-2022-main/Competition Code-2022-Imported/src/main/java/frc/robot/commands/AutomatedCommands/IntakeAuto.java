@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class IntakeAuto extends CommandBase {
   boolean run;
   Intake intake;
-  private long time;
+  private double time;
 
   public IntakeAuto(Intake intake, boolean run) {
     this.intake = intake;
@@ -29,10 +29,9 @@ public class IntakeAuto extends CommandBase {
   public void execute() {}
 
   public void end(boolean interrupted) {
-    System.out.println("Intake done");
   }
 
   public boolean isFinished() {
-    return (System.currentTimeMillis() - time > 5000);
+    return (System.currentTimeMillis() - time > 1500);
   }
 }

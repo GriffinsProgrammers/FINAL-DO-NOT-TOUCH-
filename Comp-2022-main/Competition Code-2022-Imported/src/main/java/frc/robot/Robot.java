@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    //CameraServer.startAutomaticCapture();
+    CameraServer.startAutomaticCapture();
     // Instantiate our RobotContainer. This will perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
@@ -85,11 +85,13 @@ public class Robot extends TimedRobot {
             rCon.getRotaters(),
             rCon.getSpinners(),
             rCon.getGyro(),
-            rCon.getCatapult(),
-            rCon.getIntake());
+            rCon.getCatapult());//,
+            //rCon.getIntake());
     // schedule the autonomous command (example)
-    rCon.reset();
-    m_autonomousCommand.schedule();
+    if (m_autonomousCommand!= null){
+      rCon.reset();
+      m_autonomousCommand.schedule();
+    }
   }
 
   public void getAutoCommand() {
